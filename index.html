@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NatureHeal Clinic | Naturopathy & Wellness Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --primary-dark: #388E3C;
+            --secondary: #8BC34A;
+            --accent: #FF9800;
+            --light: #F5F9F5;
+            --dark: #263238;
+            --gray: #607D8B;
+            --light-gray: #ECEFF1;
+            --danger: #F44336;
+            --success: #4CAF50;
+            --warning: #FFC107;
+            --info: #2196F3;
+            --text: #37474F;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #f0f0f0;
+            --light: #1e1e1e;
+            --light-gray: #2d2d2d;
+            --text: #e0e0e0;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        body.dark-mode header {
+            background-color: #1e1e1e;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .nav-tools {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-bar {
+            position: relative;
+        }
+
+        .search-bar input {
+            padding: 8px 15px 8px 35px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            width: 250px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            transition: var(--transition);
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-icons button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--danger);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 15px 5%;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        body.dark-mode nav {
+            background-color: #1e1e1e;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        body.dark-mode .main-nav a {
+            color: #e0e0e0;
+        }
+
+        .main-nav a.active, .main-nav a:hover {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--primary);
+        }
+
+        .main-nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        /* Main Layout */
+        .container {
+            display: flex;
+            min-height: calc(100vh - 160px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: white;
+            padding: 25px 0;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: sticky;
+            top: 160px;
+            height: calc(100vh - 160px);
+            overflow-y: auto;
+        }
+
+        body.dark-mode .sidebar {
+            background-color: #1e1e1e;
+        }
+
+        .sidebar-title {
+            padding: 0 20px 15px;
+            font-weight: 600;
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: var(--text);
+            transition: var(--transition);
+            gap: 12px;
+        }
+
+        body.dark-mode .sidebar-menu a {
+            color: #e0e0e0;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--primary);
+        }
+
+        .sidebar-menu i {
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background-color: var(--light-gray);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .main-content {
+            background-color: #121212;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        .breadcrumb i {
+            font-size: 0.7rem;
+        }
+
+        .page-title {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-title h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        body.dark-mode .page-title h2 {
+            color: #e0e0e0;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+
+        /* Dashboard Styles */
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .summary-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary);
+        }
+
+        body.dark-mode .summary-card {
+            background-color: #1e1e1e;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(76, 175, 80, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .card-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .card-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .chart-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .chart-card {
+            background-color: #1e1e1e;
+        }
+
+        .chart-card h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+
+        body.dark-mode .chart-card h3 {
+            color: #e0e0e0;
+        }
+
+        .chart-placeholder {
+            height: 300px;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--gray);
+        }
+
+        body.dark-mode .chart-placeholder {
+            background-color: #2d2d2d;
+        }
+
+        .recent-appointments {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .recent-appointments {
+            background-color: #1e1e1e;
+        }
+
+        .recent-appointments h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+
+        body.dark-mode .recent-appointments h3 {
+            color: #e0e0e0;
+        }
+
+        .appointment-list {
+            list-style: none;
+        }
+
+        .appointment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .appointment-item:last-child {
+            border-bottom: none;
+        }
+
+        .appointment-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .appointment-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .appointment-details h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .appointment-details p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .appointment-time {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Login Page */
+        .login-container {
+            display: flex;
+            min-height: 100vh;
+            background-color: var(--light-gray);
+        }
+
+        .login-left {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            color: white;
+            text-align: center;
+        }
+
+        .login-left h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .login-left p {
+            max-width: 500px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .login-right {
+            width: 450px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 50px;
+        }
+
+        body.dark-mode .login-right {
+            background-color: #1e1e1e;
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-logo img {
+            height: 80px;
+            margin-bottom: 15px;
+        }
+
+        .login-logo h2 {
+            font-size: 1.8rem;
+            color: var(--text);
+        }
+
+        body.dark-mode .login-logo h2 {
+            color: #e0e0e0;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        body.dark-mode .login-form label {
+            color: #e0e0e0;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--light-gray);
+        }
+
+        body.dark-mode .login-form input {
+            background-color: #2d2d2d;
+            border-color: #3d3d3d;
+            color: #e0e0e0;
+        }
+
+        .login-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .remember input {
+            width: auto;
+        }
+
+        .forgot-password {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 5% 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-column p {
+            margin-bottom: 15px;
+            color: #B0BEC5;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+
+        .contact-info i {
+            color: var(--primary);
+            margin-top: 4px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #37474F;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #B0BEC5;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-links i {
+            font-size: 0.8rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #37474F;
+            color: #B0BEC5;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                width: 70px;
+            }
+            
+            .sidebar-title, .sidebar-menu span {
+                display: none;
+            }
+            
+            .sidebar-menu a {
+                justify-content: center;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .search-bar input {
+                width: 180px;
+            }
+            
+            .main-nav {
+                display: none;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                padding: 15px 0;
+            }
+            
+            .sidebar-menu {
+                display: flex;
+                overflow-x: auto;
+                padding: 0 15px;
+            }
+            
+            .sidebar-menu li {
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+            
+            .sidebar-menu a {
+                flex-direction: column;
+                gap: 5px;
+                font-size: 0.8rem;
+                padding: 10px;
+            }
+            
+            .login-container {
+                flex-direction: column;
+            }
+            
+            .login-right {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .top-bar {
+                padding: 15px;
+            }
+            
+            .search-bar {
+                order: 3;
+                width: 100%;
+            }
+            
+            .search-bar input {
+                width: 100%;
+            }
+            
+            .nav-icons {
+                gap: 10px;
+            }
+            
+            .main-content {
+                padding: 20px 15px;
+            }
+            
+            .summary-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page (default view) -->
+    <div class="login-container" id="loginPage">
+        <div class="login-left">
+            <h1>NatureHeal Clinic</h1>
+            <p>Welcome to our holistic wellness center where we combine traditional naturopathy with modern healthcare practices to help you achieve optimal health and wellbeing.</p>
+            <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; width: 150px;">
+                    <i class="fas fa-leaf fa-2x" style="margin-bottom: 10px;"></i>
+                    <h3>Naturopathy</h3>
+                </div>
+                <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; width: 150px;">
+                    <i class="fas fa-spa fa-2x" style="margin-bottom: 10px;"></i>
+                    <h3>Herbal Medicine</h3>
+                </div>
+                <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; width: 150px;">
+                    <i class="fas fa-apple-alt fa-2x" style="margin-bottom: 10px;"></i>
+                    <h3>Nutrition</h3>
+                </div>
+            </div>
+        </div>
+        <div class="login-right">
+            <div class="login-logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2Ij48cGF0aCBkPSJNMjI0LDExMkgxODBWNjRjMC0xNy42Ny0xNC4zMy0zMi0zMi0zMkgxMDhDOTAuMzMsMzIsNzYsNDYuMzMsNzYsNjR2NDhIMzJhOCw4LDAsMCwwLTgsOHYxNmE4LDgsMCwwLDAsOCw4SDc2djQ4YzAsMTcuNjcsMTQuMzMsMzIsMzIsMzJoNDBjMTcuNjcsMCwzMi0xNC4zMywzMi0zMlYxNDRIMjI0YTgsOCwwLDAsMCw4LThWMTIwQTgsOCwwLDAsMCwyMjQsMTEyWk05Niw2NGE4LDgsMCwwLDEsOC04aDQwYTgsOCwwLDAsMSw4LDh2NDhIOTZWNjRabTY0LDEyOEgxMDhhOCw4LDAsMCwxLTgtOFYxNDRoNzJ2NDBBOCw4LDAsMCwxLDE2MCwxOTJaIiBmaWxsPSIjZmZmIi8+PC9zdmc+" alt="NatureHeal Logo">
+                <h2>Staff Login</h2>
+            </div>
+            <form class="login-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+                <div class="remember-forgot">
+                    <div class="remember">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="button" class="login-btn" onclick="login()">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Application (hidden until login) -->
+    <div id="appContainer" style="display: none;">
+        <!-- Header -->
+        <header>
+            <div class="top-bar">
+                <div class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2Ij48cGF0aCBkPSJNMjI0LDExMkgxODBWNjRjMC0xNy42Ny0xNC4zMy0zMi0zMi0zMkgxMDhDOTAuMzMsMzIsNzYsNDYuMzMsNzYsNjR2NDhIMzJhOCw4LDAsMCwwLTgsOHYxNmE4LDgsMCwwLDAsOCw4SDc2djQ4YzAsMTcuNjcsMTQuMzMsMzIsMzIsMzJoNDBjMTcuNjcsMCwzMi0xNC4zMywzMi0zMlYxNDRIMjI0YTgsOCwwLDAsMCw4LThWMTIwQTgsOCwwLDAsMCwyMjQsMTEyWk05Niw2NGE4LDgsMCwwLDEsOC04aDQwYTgsOCwwLDAsMSw4LDh2NDhIOTZWNjRabTY0LDEyOEgxMDhhOCw4LDAsMCwxLTgtOFYxNDRoNzJ2NDBBOCw4LDAsMCwxLDE2MCwxOTJaIiBmaWxsPSIjZmZmIi8+PC9zdmc+" alt="NatureHeal Logo">
+                    <h1>NatureHeal Clinic</h1>
+                </div>
+                <div class="nav-tools">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search patients, visits...">
+                    </div>
+                    <div class="nav-icons">
+                        <button id="darkModeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button>
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                    </div>
+                    <div class="user-profile">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2Ij48Y2lyY2xlIGN4PSIxMjgiIGN5PSI4MCIgcj0iNDgiIGZpbGw9IiM0Y2FmNTAiLz48cGF0aCBkPSJNMTI4LDE0NGMtNDQuMTgsMC04MCwzNS44Mi04MCw4MHYxNmgxNjBWMjI0QzIwOCwxNzkuODIsMTcyLjE4LDE0NCwxMjgsMTQ0WiIgZmlsbD0iIzRjYWY1MCIvPjwvc3ZnPg==" alt="User">
+                        <span>Dr. Sarah Johnson</span>
+                    </div>
+                </div>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="#" class="active" data-page="dashboard">Dashboard</a></li>
+                    <li><a href="#" data-page="patients">Patients</a></li>
+                    <li><a href="#" data-page="visits">Visits</a></li>
+                    <li><a href="#" data-page="tests">Tests</a></li>
+                    <li><a href="#" data-page="receipts">Receipts</a></li>
+                    <li><a href="#" data-page="settings">Settings</a></li>
+                </ul>
+                <button class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <div class="container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <h3 class="sidebar-title">Quick Actions</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#"><i class="fas fa-plus-circle"></i> <span>New Patient</span></a></li>
+                    <li><a href="#"><i class="fas fa-calendar-plus"></i> <span>Schedule Visit</span></a></li>
+                    <li><a href="#"><i class="fas fa-vial"></i> <span>Order Test</span></a></li>
+                    <li><a href="#"><i class="fas fa-file-invoice"></i> <span>Create Receipt</span></a></li>
+                </ul>
+                
+                <h3 class="sidebar-title" style="margin-top: 30px;">Reports</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#"><i class="fas fa-chart-line"></i> <span>Monthly Report</span></a></li>
+                    <li><a href="#"><i class="fas fa-user-injured"></i> <span>Patient Reports</span></a></li>
+                    <li><a href="#"><i class="fas fa-pills"></i> <span>Treatment Stats</span></a></li>
+                </ul>
+            </aside>
+
+            <!-- Dashboard Content -->
+            <main class="main-content" id="mainContent">
+                <div class="breadcrumb">
+                    <a href="#">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Dashboard</span>
+                </div>
+                
+                <div class="page-title">
+                    <h2>Dashboard</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> New Appointment
+                    </button>
+                </div>
+                
+                <!-- Summary Cards -->
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-user-injured"></i>
+                        </div>
+                        <div class="card-value">142</div>
+                        <div class="card-label">Total Patients</div>
+                    </div>
+                    
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="card-value">8</div>
+                        <div class="card-label">Upcoming Visits</div>
+                    </div>
+                    
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <div class="card-value">5</div>
+                        <div class="card-label">Pending Tests</div>
+                    </div>
+                    
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="card-value">$8,420</div>
+                        <div class="card-label">Monthly Revenue</div>
+                    </div>
+                </div>
+                
+                <!-- Charts -->
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3>Patient Visits (Last 6 Months)</h3>
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-line fa-3x"></i>
+                            <span style="margin-left: 15px;">Visits Over Time Chart</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <h3>Symptom Analysis</h3>
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-pie fa-3x"></i>
+                            <span style="margin-left: 15px;">Symptoms Distribution Chart</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Appointments -->
+                <div class="recent-appointments">
+                    <h3>Recent Appointments</h3>
+                    <ul class="appointment-list">
+                        <li class="appointment-item">
+                            <div class="appointment-info">
+                                <div class="appointment-avatar">MJ</div>
+                                <div class="appointment-details">
+                                    <h4>Michael Johnson</h4>
+                                    <p>Follow-up Consultation</p>
+                                </div>
+                            </div>
+                            <div class="appointment-time">Today, 10:30 AM</div>
+                        </li>
+                        
+                        <li class="appointment-item">
+                            <div class="appointment-info">
+                                <div class="appointment-avatar">SR</div>
+                                <div class="appointment-details">
+                                    <h4>Sarah Roberts</h4>
+                                    <p>Initial Consultation</p>
+                                </div>
+                            </div>
+                            <div class="appointment-time">Today, 2:15 PM</div>
+                        </li>
+                        
+                        <li class="appointment-item">
+                            <div class="appointment-info">
+                                <div class="appointment-avatar">DP</div>
+                                <div class="appointment-details">
+                                    <h4>David Peterson</h4>
+                                    <p>Herbal Therapy Session</p>
+                                </div>
+                            </div>
+                            <div class="appointment-time">Tomorrow, 9:00 AM</div>
+                        </li>
+                        
+                        <li class="appointment-item">
+                            <div class="appointment-info">
+                                <div class="appointment-avatar">EC</div>
+                                <div class="appointment-details">
+                                    <h4>Emma Chen</h4>
+                                    <p>Nutrition Counseling</p>
+                                </div>
+                            </div>
+                            <div class="appointment-time">Tomorrow, 11:45 AM</div>
+                        </li>
+                        
+                        <li class="appointment-item">
+                            <div class="appointment-info">
+                                <div class="appointment-avatar">TW</div>
+                                <div class="appointment-details">
+                                    <h4>Thomas Wilson</h4>
+                                    <p>Acupuncture Session</p>
+                                </div>
+                            </div>
+                            <div class="appointment-time">Tomorrow, 4:30 PM</div>
+                        </li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>NatureHeal Clinic</h3>
+                    <p>Your holistic wellness partner for natural healing and preventive healthcare. We combine traditional naturopathy with modern healthcare practices.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Wellness Blvd, Green Valley, CA 90210</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>(555) 123-4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@naturehealclinic.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 3:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Our Services</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Practitioners</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Testimonials</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Herbal Medicine</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Nutrition Counseling</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Acupuncture</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Homeopathy</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Lifestyle Coaching</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 NatureHeal Clinic. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--primary);"></i> for Holistic Wellness
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Authentication logic
+        function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+            
+            // Simple validation
+            if(email && password) {
+                // Store login state
+                localStorage.setItem('isLoggedIn', 'true');
+                
+                // Show main app
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('appContainer').style.display = 'block';
+            } else {
+                alert('Please enter both email and password');
+            }
+        }
+        
+        // Check if user is logged in
+        if(localStorage.getItem('isLoggedIn') {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('appContainer').style.display = 'block';
+        }
+        
+        // Dark mode toggle
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const icon = this.querySelector('i');
+            if(document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+        
+        // Navigation
+        document.querySelectorAll('.main-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('.main-nav a.active').classList.remove('active');
+                this.classList.add('active');
+                
+                // Here you would load the appropriate content
+                alert(`Loading ${this.dataset.page} page...`);
+            });
+        });
+        
+        // Mobile menu toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('.main-nav').style.display = 
+                document.querySelector('.main-nav').style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
